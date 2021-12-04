@@ -272,6 +272,23 @@ static Drw *drw;
 static Monitor *mons, *selmon;
 static Window root, wmcheckwin;
 
+/* jesus bro */
+static const unsigned int ulinepad	= 5;	/* horizontal padding between the underline and tag */
+static const unsigned int ulinestroke	= 2;	/* thickness / height of the underline */
+static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the bar the line should appear */
+static const int ulineall 		= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
+static const char *tagsel[][2] = {
+	{ "#ffffff", "#ff0000" },
+	{ "#ffffff", "#ff7f00" },
+	{ "#000000", "#ffff00" },
+	{ "#000000", "#00ff00" },
+	{ "#ffffff", "#0000ff" },
+	{ "#ffffff", "#4b0082" },
+	{ "#ffffff", "#9400d3" },
+	{ "#000000", "#ffffff" },
+	{ "#ffffff", "#000000" },
+};
+
 /* configuration, allows nested code to access above variables */
 #include "config.h"
 
@@ -722,6 +739,7 @@ drawbar(Monitor *m)
 			urg |= c->tags;
 	}
 	x = 0;
+	
 	for (i = 0; i < LENGTH(tags); i++) {
 		w = TEXTW(tags[i]);
 		drw_setscheme(drw, (m->tagset[m->seltags] & 1 << i ? tagscheme[i] : scheme[SchemeNorm]));
