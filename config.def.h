@@ -12,16 +12,44 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char colorFultag		= 1;
+static const int horizpadbar        = 5;
+static const int vertpadbar         = 11;
+static const int vertpadtab         = 33;
+static const int horizpadtabi       = 15;
+static const int horizpadtabo       = 15;
+static const int scalepreview       = 4;
+
+/* Here lies the manual colorscheme*/
+static const char black[] 		= 	"#1e222a";
+static const char green[] 		= 	"#7eca9c";
+static const char white[] 		= 	"#abb2bf";
+static const char gray[] 		= 	"#282c34";
+static const char blue[] 		= 	"#7aa2f7";
+static const char red[] 		= 	"#d47d85";
+static const char darkblue[] 	= 	"#668ee3";
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeNorm]       = { gray, black, gray  },
+    [SchemeSel]        = { gray, blue,  blue  },
+    [TabSel]           = { blue, gray,  black  },
+    [TabNorm]          = { gray, black, black },
+    [SchemeTag]        = { gray, black, black },
+    [SchemeTag1]       = { blue,  black, black },
+    [SchemeTag2]       = { red,   black, black },
+    [SchemeTag3]       = { orange, black,black },
+    [SchemeTag4]       = { green, black, black },
+    [SchemeTag5]       = { pink,  black, black },
+    [SchemeLayout]     = { green, black, black }, 
+    [SchemeBtnPrev]    = { green, black, black }, 
+    [SchemeBtnNext]    = { yellow, black, black }, 
+    [SchemeBtnClose]   = { red, black, black }, 
 };
+
+static const int tagschemes[] = { SchemeTag1, SchemeTag2, SchemeTag3,
+                                  SchemeTag4, SchemeTag5
+                                };
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };

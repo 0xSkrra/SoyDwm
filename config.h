@@ -13,16 +13,35 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "JetBrainsMono Nerd Font:style:medium:size=18",
                                         "Material Design Icons-Regular:size=18",};
 static const char dmenufont[]       = "DejaVu:size=18";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char colorFultag		= 1;
+static const int horizpadbar        = 5;
+static const int vertpadbar         = 11;
+static const int vertpadtab         = 33;
+static const int horizpadtabi       = 15;
+static const int horizpadtabo       = 15;
+static const int scalepreview       = 4;
+#include "themes/onedark.h"
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeNorm]       = { gray3, black, gray2 },
+    [SchemeSel]        = { gray4, blue,  blue  },
+    [TabSel]           = { blue, gray2,  black  },
+    [TabNorm]          = { gray3, black, black },
+    [SchemeTag]        = { gray3, black, black },
+    [SchemeTag1]       = { blue,  black, black },
+    [SchemeTag2]       = { red,   black, black },
+    [SchemeTag3]       = { orange, black,black },
+    [SchemeTag4]       = { green, black, black },
+    [SchemeTag5]       = { pink,  black, black },
+    [SchemeLayout]     = { green, black, black }, 
+    [SchemeBtnPrev]    = { green, black, black }, 
+    [SchemeBtnNext]    = { yellow, black, black }, 
+    [SchemeBtnClose]   = { red, black, black }, 
 };
+
+static const int tagschemes[] = { SchemeTag1, SchemeTag2, SchemeTag3,
+                                  SchemeTag4, SchemeTag5
+                                };
 
 /* tagging */
 static char *tags[] = {" ", " ", " ", " ", " "};
