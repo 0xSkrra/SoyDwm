@@ -18,11 +18,27 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
+static const char black[] 		=	"#1e222a";
+static const char green[] 		=	"#7eca9c";
+static const char white[] 		=	"#abb2bf";
+static const char grey[] 		=	"#282c34";
+static const char blue[] 		=	"#7aa2f7";
+static const char red[] 		=	"#d47d85";
+static const char darkblue[] 	=	"#668ee3";
+
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
-};
+    /*               fg         bg         border   */
+    [SchemeNorm]       = { col_gray3, black, col_gray2 },
+    [SchemeSel]        = { col_gray4, blue,  blue  },
+    [TabSel]           = { blue, col_gray2,  black  },
+    [TabNorm]          = { col_gray3, black, black },
+    [SchemeTag]        = { col_gray3, black, black },
+    [SchemeTag1]       = { blue,  black, black },
+    [SchemeTag2]       = { red,   black, black },
+    [SchemeTag3]       = { blue, black,black },
+    [SchemeTag4]       = { green, black, black },
+    [SchemeTag5]       = { green,  black, black },
+};//
 static const char *tagsel[][2] = {
 	{ "#ffffff"},
 	{ "#ffffff"},
@@ -79,6 +95,7 @@ static const Layout layouts[] = {
 
 /* key definitions */
 #define MODKEY Mod4Mask
+#define MODKEYAlt Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
