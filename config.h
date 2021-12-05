@@ -10,9 +10,9 @@ static const unsigned int gappov    = 10;       /* vert outer gap between window
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "JetBrainsMono Nerd Font:style:medium:size=18",
-                                        "Material Design Icons-Regular:size=18",};
-static const char dmenufont[]       = "DejaVu:size=18";
+static const char *fonts[]          = { "JetBrainsMono Nerd Font:style:medium:size=16:antialias=true;autohint=true",
+                                        "Material Design Icons-Regular:size=16:antialias=true;autohint=true",};
+static const char dmenufont[]       = "DejaVu:size=16:antialias=true;autohint=true";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -25,6 +25,7 @@ static const char grey[] 		=	"#282c34";
 static const char blue[] 		=	"#7aa2f7";
 static const char red[] 		=	"#d47d85";
 static const char darkblue[] 	=	"#668ee3";
+static const int colorfultag        = 1; 
 
 static const char *colors[][3]      = {
     /*               fg         bg         border   */
@@ -38,7 +39,11 @@ static const char *colors[][3]      = {
     [SchemeTag3]       = { blue, black,black },
     [SchemeTag4]       = { green, black, black },
     [SchemeTag5]       = { green,  black, black },
-};//
+};
+static const int tagschemes[] = { SchemeTag1, SchemeTag2, SchemeTag3,
+                                  SchemeTag4, SchemeTag5
+                                };
+
 static const char *tagsel[][2] = {
 	{ "#ffffff"},
 	{ "#ffffff"},
