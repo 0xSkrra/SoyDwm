@@ -18,43 +18,31 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
-static const char black[] 		=	"#1e222a";
-static const char green[] 		=	"#7eca9c";
-static const char white[] 		=	"#abb2bf";
-static const char grey[] 		=	"#282c34";
-static const char blue[] 		=	"#7aa2f7";
-static const char red[] 		=	"#d47d85";
-static const char darkblue[] 	=	"#668ee3";
-static const int colorfultag        = 1; 
+static const char black[] 			= "#1e222a";
+static const char green[] 			= "#7eca9c";
+static const char white[] 			= "#abb2bf";
+static const char grey[] 			= "#282c34";
+static const char blue[] 			= "#7aa2f7";
+static const char red[] 			= "#d47d85";
+static const char darkblue[] 		= "#668ee3";
+static const int colorfultag        = 1;
 
 static const char *colors[][3]      = {
     /*               fg         bg         border   */
     [SchemeNorm]       = { col_gray3, black, col_gray2 },
-    [SchemeSel]        = { col_gray4, blue,  blue  },
+    [SchemeSel]        = { col_gray4, blue,  darkblue  },
     [TabSel]           = { blue, col_gray2,  black  },
     [TabNorm]          = { col_gray3, black, black },
     [SchemeTag]        = { col_gray3, black, black },
     [SchemeTag1]       = { blue,  black, black },
-    [SchemeTag2]       = { red,   black, black },
+    [SchemeTag2]       = { blue,   black, black },
     [SchemeTag3]       = { blue, black,black },
-    [SchemeTag4]       = { green, black, black },
-    [SchemeTag5]       = { green,  black, black },
+    [SchemeTag4]       = { blue, black, black },
+    [SchemeTag5]       = { blue,  black, black },
 };
 static const int tagschemes[] = { SchemeTag1, SchemeTag2, SchemeTag3,
                                   SchemeTag4, SchemeTag5
                                 };
-
-static const char *tagsel[][2] = {
-	{ "#ffffff"},
-	{ "#ffffff"},
-	{ "#ffffff"},
-	{ "#ffffff"},
-	{ "#ffffff"},
-	{ "#ffffff"},
-	{ "#ffffff"},
-	{ "#ffffff"},
-	{ "#ffffff"},
-};
 
 /* tagging */
 static char *tags[] = {" ", " ", " ", " ", " "};
@@ -69,6 +57,7 @@ static const Rule rules[] = {
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 	{ "discord",  NULL,		  NULL,       1,			0,			  1 },
 	{ "Steam", 	  NULL,       NULL,       2,            0,            1 },
+	{ "Spotify",  NULL,       NULL,       3,            0,            1 },
 };
 
 /* layout(s) */
