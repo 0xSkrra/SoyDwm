@@ -23,6 +23,17 @@ static const char *colors[][3]      = {
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
+static const char *tagsel[][2] = {
+	{ "#ffffff"},
+	{ "#ffffff"},
+	{ "#ffffff"},
+	{ "#ffffff"},
+	{ "#ffffff"},
+	{ "#ffffff"},
+	{ "#ffffff"},
+	{ "#ffffff"},
+	{ "#ffffff"},
+};
 
 /* tagging */
 static char *tags[] = {" ", " ", " ", " ", " "};
@@ -35,12 +46,14 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "discord",  NULL,		  NULL,       1,			0,			  1 },
+	{ "Steam", 	  NULL,       NULL,       2,            0,            1 },
 };
 
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
 #include "vanitygaps.c"
