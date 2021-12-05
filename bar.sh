@@ -4,7 +4,7 @@
 
 source ~/dwm_test/dwm-6.2/themes/onedark.h
 function gamer(){
-    echo "^c$black^ ^b$darkblue^ 󱑆 ^c$black^^b$blue^ $(date '+%a %I:%M  -  %d/%m/%Y')"
+    echo "^c$black^ ^b$darkblue^ 󱑆 ^c$black^^b$blue^ $(date '+%a %H:%M  -  %d/%m/%Y')"
 }
 function updates(){
     updates=$(checkupdates | wc -l)
