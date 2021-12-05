@@ -16,6 +16,9 @@ static const char dmenufont[]       = "DejaVu:size=16:antialias=true;autohint=tr
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
+static const int horizpadbar        = 5;
+static const int vertpadbar         = 11;
+static const int vertpadtab         = 33;
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
 static const char black[] 			= "#1e222a";
