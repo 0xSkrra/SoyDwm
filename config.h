@@ -10,8 +10,9 @@ static const unsigned int gappov    = 10;       /* vert outer gap between window
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "JetBrainsMono Nerd Font:style:medium:size=25:antialias=true;autohint=true",
-                                        "Material Design Icons Regular:size=25:antialias=true;autohint=true",};
+static const char *fonts[]          = { "DejaVu Sans Mono:size=10",
+										 "JetBrainsMono Nerd Font:size=13",
+										 "Mplus 1p,Mplus 1p Medium:style=Medium:size=14",};
 static const char dmenufont[]       = "DejaVu:size=25:antialias=true;autohint=true";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -48,19 +49,21 @@ static const int tagschemes[] = { SchemeTag1, SchemeTag2, SchemeTag3,
                                 };
 
 /* tagging */
-static char *tags[] = {" ", " ", " ", " ", " "};
+//static char *tags[] = {" ", " ", " ", " ", " "};
 
+static char *tags[] = {"シ ", "ギ ", "ミ ", "ヸ ", "メ "};
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title 
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
-	{ "discord",  NULL,		  NULL,       1,			0,			  2 },
-	{ "Steam", 	  NULL,       NULL,       2,            0,            2 },
-	{ "Spotify",  NULL,       NULL,       3,            0,            2 },
+	{ "Gimp",     NULL,       NULL,       0,            1,           -1,		0},
+	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1,		0},
+	{ "discord",  NULL,		  NULL,       1,			0,			  2,		0},
+	{ "Steam", 	  NULL,       NULL,       2,            0,            2,		0},
+	{ "Spotify",  NULL,       NULL,       3,            0,            2,	    0},
+	{ "pmixer",   NULL,   	  NULL,   	  0,            1,           -1,        0},
 };
 
 /* layout(s) */
@@ -107,12 +110,16 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "kitty", NULL };
 static const char *rofi[] = {"rofi", "-show", "drun", NULL };
+static const char *scratchpadcmd[] = {"v", "spotify", NULL};
+static const char *pmixercmd[] = {"kitty", "--class", "pmixer", "-e","pulsemixer", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = rofi } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_v, 	   spawn,          {.v = pmixercmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
+	{ MODKEY|ShiftMask,             XK_s,  	   togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
@@ -142,6 +149,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[11]} },
+	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[13]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },

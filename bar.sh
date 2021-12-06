@@ -10,9 +10,9 @@ function gamer(){
 function updates(){
     updates=$(checkupdates | wc -l)
     if [ "$updates" -eq "0" ]; then
-        echo "^c$green^  Fully Updated"
+        echo "^c$green^ Fully Updated"
     else
-        echo "^c$green^  $updates"" updates"
+        echo "^c$green^ $updates"" updates"
     fi
 }
 
