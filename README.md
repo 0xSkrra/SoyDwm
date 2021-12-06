@@ -18,8 +18,7 @@ notitle
 
 colorfultags (manually)
 
-
-alwaysfloating center
+alwayscenter
 
 
 namedscratchpad
