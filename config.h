@@ -10,9 +10,9 @@ static const unsigned int gappov    = 10;       /* vert outer gap between window
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "DejaVu Sans Mono:size=10",
+static const char *fonts[]          = { "SF Mono:style=Regular:size=11",
 										 "JetBrainsMono Nerd Font:size=13",
-										 "Mplus 1p,Mplus 1p Medium:style=Medium:size=14",};
+										 "Mplus 1p,Mplus 1p Medium:style=Medium:size=13",};
 static const char dmenufont[]       = "DejaVu:size=25:antialias=true;autohint=true";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -22,27 +22,28 @@ static const int vertpadbar         = 11;
 static const int vertpadtab         = 33;
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
-static const char black[] 			= "#1e222a";
+static const char black[] 			= "#19131C";
 static const char green[] 			= "#7eca9c";
 static const char white[] 			= "#abb2bf";
 static const char grey[] 			= "#282c34";
 static const char blue[] 			= "#7aa2f7";
-static const char red[] 			= "#d47d85";
+static const char red[] 			= "#E9896A";
 static const char darkblue[] 		= "#668ee3";
+static const char customBorder[]	= "#F79371";
 static const int colorfultag        = 1;
 
 static const char *colors[][3]      = {
     /*               fg         bg         border   */
-    [SchemeNorm]       = { col_gray3, black, col_gray2 },
-    [SchemeSel]        = { col_gray4, blue,  darkblue  },
-    [TabSel]           = { blue, col_gray2,  black  },
+    [SchemeNorm]       = { red, black, black },
+    [SchemeSel]        = { black, red,  customBorder  },
+    [TabSel]           = { red, col_gray2,  black  },
     [TabNorm]          = { col_gray3, black, black },
     [SchemeTag]        = { col_gray3, black, black },
-    [SchemeTag1]       = { blue,  black, black },
-    [SchemeTag2]       = { blue,   black, black },
-    [SchemeTag3]       = { blue, black,black },
-    [SchemeTag4]       = { blue, black, black },
-    [SchemeTag5]       = { blue,  black, black },
+    [SchemeTag1]       = { red,  black, black },
+    [SchemeTag2]       = { red,   black, black },
+    [SchemeTag3]       = { red, black,black },
+    [SchemeTag4]       = { red, black, black },
+    [SchemeTag5]       = { red,  black, black },
 };
 static const int tagschemes[] = { SchemeTag1, SchemeTag2, SchemeTag3,
                                   SchemeTag4, SchemeTag5
