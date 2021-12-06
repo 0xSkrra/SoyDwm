@@ -6,11 +6,26 @@
 
 # Patches
 Statuspadding
+
+
 Status2d
+
+
 VacantTags
+
+
 notitle
+
 colorfultags (manually)
+
+
 alwaysfloating center
+
+
 namedscratchpad
+
+
 movestack
+
+
 tagunderlines
