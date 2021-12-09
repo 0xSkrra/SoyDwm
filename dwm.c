@@ -56,6 +56,8 @@
 #define HEIGHT(X)               ((X)->h + 2 * (X)->bw)
 #define TAGMASK                 ((1 << LENGTH(tags)) - 1)
 #define TEXTW(X)                (drw_fontset_getwidth(drw, (X)) + lrpad)
+#define RIGHTOF(a,b)			(a.y_org > b.y_org) || \
+								((a.y_org == b.y_org) && (a.x_org > b.x_org))
 
 /* enums */
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
@@ -228,6 +230,9 @@ static void setup(void);
 static void seturgent(Client *c, int urg);
 static void showhide(Client *c);
 static void sigchld(int unused);
+#ifdef XINERAMA
+static void sortscreens(XineramaScreenInfo *screens, int n);
+#endif /* XINERAMA */
 static void spawn(const Arg *arg);
 static void spawnscratch(const Arg *arg);
 static void tag(const Arg *arg);
@@ -300,7 +305,22 @@ static const int ulineall 		= 0;	/* 1 to show underline on all tags, 0 for just 
 
 /* configuration, allows nested code to access above variables */
 #include "config.h"
-
+#ifdef XINERAMA
+void
+sortscreens(XineramaScreenInfo *screens, int n)
+{
+	int i,j;
+	XineramaScreenInfo *screen = ecalloc(1, sizeof(XineramaScreenInfo));
+	for (i=0; i<n; i++)
+		for (j = i + 1; j < n; j++)
+			if(RIGHTOF(screens[i], screens[j])){
+				memcpy(&screen[0], &screens[i], sizeof(XineramaScreenInfo));
+				memcpy(&screens[i], &screens[j], sizeof(XineramaScreenInfo));
+				memcpy(&screens[j], &screen[0], sizeof(XineramaScreenInfo));
+			}
+	XFree(screen);
+}
+#endif /*XINERAMA*/
 /* compile-time check if all tags fit into an unsigned int bit array. */
 struct NumTags { char limitexceeded[LENGTH(tags) > 31 ? -1 : 1]; };
 
@@ -2034,6 +2054,7 @@ updategeom(void)
 				memcpy(&unique[j++], &info[i], sizeof(XineramaScreenInfo));
 		XFree(info);
 		nn = j;
+		sortscreens(unique, nn);
 		if (n <= nn) { /* new monitors available */
 			for (i = 0; i < (nn - n); i++) {
 				for (m = mons; m && m->next; m = m->next);
