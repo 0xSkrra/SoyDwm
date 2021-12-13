@@ -2,13 +2,23 @@
 
 #https://dwm.suckless.org/patches/statusallmons/dwm-statusallmons-6.2.diff perhaps i should get this one day?
 
-color2="#e05a2f"
+color2="#F79371"
 color1="#e9896a"
 green="#7eca9c"
-black="#1e222a"
+black="#19131C"
+mic_source=$(pactl get-default-source)
 
 function gamer(){
-    echo "^c$black^ ^b$color2^  ^c$black^^b$color1^ $(date '+%a, %H:%M | %d/%m/%Y ')"
+    echo "^c$black^ ^b$color2^ $(date '+%H:%M') ^c$black^^b$color1^ $(date '+%d/%m/%Y ')^b$black^ "
+}
+
+function microphone(){
+    is_mute=$(pactl get-source-mute $mic_source)
+    if [ "$is_mute" = "Mute: yes" ]; then
+        echo ""
+    else
+        echo ""
+    fi
 }
 #function updates(){
 #    updates=$(checkupdates | wc -l)
@@ -22,5 +32,5 @@ function gamer(){
 #}
 
 while true; do
-     sleep 1 && xsetroot -name "$(gamer)"
+     sleep 1 && xsetroot -name "$(microphone) $(gamer)"
  done

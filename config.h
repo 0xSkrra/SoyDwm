@@ -11,8 +11,8 @@ static       int smartgaps          = 0;        /* 1 means no outer gap when the
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "SF Mono:style=Regular:size=11",
-										 "JetBrainsMono Nerd Font:size=13",
-										 "Mplus 1p,Mplus 1p Medium:style=Medium:size=13",};
+										 "JetBrainsMono Nerd Font Mono:size=13",
+										 "Mplus 1p,Mplus 1p Medium:style=Medium:size=13"};
 static const char dmenufont[]       = "DejaVu:size=25:antialias=true;autohint=true";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -29,7 +29,7 @@ static const char grey[] 			= "#282c34";
 static const char blue[] 			= "#7aa2f7";
 static const char red[] 			= "#E9896A";
 static const char darkblue[] 		= "#668ee3";
-static const char customBorder[]	= "#F79371";
+static const char customBorder[]	= "#A289AE";
 static const int colorfultag        = 1;
 
 static const char *colors[][3]      = {
@@ -52,7 +52,7 @@ static const int tagschemes[] = { SchemeTag1, SchemeTag2, SchemeTag3,
 /* tagging */
 //static char *tags[] = {" ", " ", " ", " ", " "};
 
-static char *tags[] = {"シ ", "ギ ", "ミ ", "ヸ ", "メ "};
+static char *tags[] = {"シ", "ギ", "ミ", "ヸ", "メ"};
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -161,7 +161,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY, 						XK_s, 	   spawn,		   SHCMD("maim -s | xclip -selection c -t image/png")},
 	{ MODKEY|ShiftMask, 			XK_p, 	   spawn,		   SHCMD("pkill -x picom > /dev/null || picom &")},
-	TAGKEYS(                        XK_1,                      0)
+	{ MODKEY,						XK_F1,	   spawn, 		   SHCMD("pactl set-source-mute $(pactl get-default-source) toggle")},
+	TAGKEYS(                        XK_1,                      0) 
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
