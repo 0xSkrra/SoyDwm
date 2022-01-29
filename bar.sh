@@ -8,7 +8,7 @@ green="#7eca9c"
 black="#181B20"
 mic_source=$(pactl get-default-source)
 
-function gamer(){
+function dateTime(){
     echo "^c$black^ ^b$color2^ $(date '+%H:%M') ^c$black^^b$color1^ $(date '+%d/%m/%Y ')^b$black^ "
 }
 
@@ -32,5 +32,5 @@ function microphone(){
 #}
 
 while true; do
-     sleep 1 && xsetroot -name "$(microphone) $(gamer)"
+     sleep 1 && xsetroot -name "$(microphone) $(dateTime)"
  done
