@@ -2,10 +2,10 @@
 
 #https://dwm.suckless.org/patches/statusallmons/dwm-statusallmons-6.2.diff perhaps i should get this one day?
 
-color2="#F79371"
-color1="#e9896a"
+color2="#fca662"
+color1="#F49448"
 green="#7eca9c"
-black="#19131C"
+black="#181B20"
 mic_source=$(pactl get-default-source)
 
 function gamer(){

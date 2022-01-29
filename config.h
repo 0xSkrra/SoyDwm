@@ -22,14 +22,14 @@ static const int vertpadbar         = 11;
 static const int vertpadtab         = 33;
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
-static const char black[] 			= "#19131C";
+static const char black[] 			= "#181B20";
 static const char green[] 			= "#7eca9c";
 static const char white[] 			= "#abb2bf";
 static const char grey[] 			= "#282c34";
 static const char blue[] 			= "#7aa2f7";
-static const char red[] 			= "#E9896A";
+static const char red[] 			= "#F49448";
 static const char darkblue[] 		= "#668ee3";
-static const char customBorder[]	= "#A289AE";
+static const char customBorder[]	= "#F49448";
 static const int colorfultag        = 1;
 
 static const char *colors[][3]      = {
@@ -61,9 +61,10 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1,		0},
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1,		0},
-	{ "discord",  NULL,		  NULL,       1,			0,			  1,		0},
-	{ "Steam", 	  NULL,       NULL,       2,            0,            1,		0},
-	{ "Spotify",  NULL,       NULL,       3,            0,            1,	    0},
+	{ "discord",  NULL,		  NULL,       1,			1,			  1,		0},
+	{ "Steam", 	  NULL,       NULL,       1,            1,            1,		0},
+	{ "dolphin",  NULL,       NULL,       0,            1,            -1,	    0},
+	{"pavucontrol", NULL,	  NULL,	      0,	    1, 		  -1, 0},
 	{ "pmixer",   NULL,   	  NULL,   	  0,            1,           -1,        0},
 };
 
@@ -111,16 +112,18 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "kitty", NULL };
 static const char *rofi[] = {"rofi", "-show", "drun", NULL };
+static const char *fileManager[] = { "dolphin", NULL };
 static const char *scratchpadcmd[] = {"v", "spotify", NULL};
+static const char *guiVolMixer[] = {"pavucontrol-qt", NULL};
 static const char *pmixercmd[] = {"kitty", "--class", "pmixer", "-e","pulsemixer", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = rofi } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_v, 	   spawn,          {.v = pmixercmd } },
+	{ MODKEY,                       XK_v, 	   spawn,          {.v = guiVolMixer } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY|ShiftMask,             XK_s,  	   togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY|ShiftMask,             XK_s,  	   spawn,  SHCMD("sleep 4 && maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png") },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
@@ -157,6 +160,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+	{ MODKEY,			XK_e,	   spawn,	   {.v = fileManager } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY, 						XK_s, 	   spawn,		   SHCMD("maim -s | xclip -selection c -t image/png")},
@@ -180,7 +184,7 @@ static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+	{ ClkStatusText,        0,              Button2,        spawn,          {.v = guiVolMixer } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
